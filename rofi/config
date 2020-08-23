@@ -1,0 +1,9 @@
+rofi.drun-icon-theme: Papirus-Adapta-Nokto-Maia
+rofi.color-enabled: true
+rofi.show-icons: true
+rofi.terminal: /usr/bin/terminal
+rofi.font : MesloLGS NF 11
+rofi.theme: /usr/share/rofi/themes/android_notification.rasi
+rofi.fake-transparency: true
+rofi.width: 500
+rofi.lines: 12
