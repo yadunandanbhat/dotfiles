@@ -61,13 +61,7 @@ And paste it in net-speed.sh
 chmod +x net-speed.sh
 The dotfiles of i3 and i3status will take care of the rest
 
-Add Powerline-status to Vim
-pip install powerline-status
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-mv PowerlineSymbols.otf ~/.local/share/fonts
-fc-cache -vf ~/.local/share/fonts
-mv 10-powerline-symbols.conf /etc/fonts/conf.d/
-The dotfile for Vim will take care of the rest
-
-
+Vim Plug for Vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+The dotfile will take care of the rest, just run ':PlugInstall' after running Vim
