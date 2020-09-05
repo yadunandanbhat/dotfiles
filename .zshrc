@@ -15,7 +15,7 @@ export ZSH="/home/yadunandanbhat/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # DEFAULT_USER=$(whoami)
 
@@ -109,5 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
+alias install="sudo pacman -S"
+alias remove="sudo pacman -R"
+alias search="sudo pacman -Ss"
+alias autoremove="sudo pacman -Rcns $(pacman -Qdtq)"
+alias update="sudo pacman -Syu"
