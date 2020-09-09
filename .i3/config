@@ -180,6 +180,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9: workspace $ws9
 # Open applications on specific workspaces
 assign [class="Chromium"] $ws3
 assign [class="Pcmanfm"] $ws4
+assign [class="Thunar"] $ws4
 for_window [class="Spotify"] move container to workspace $ws9
 assign [class="vlc"] $ws8
 
@@ -242,8 +243,8 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
-mode "resize" {
+bindsym $mod+r mode "Window Resize"
+mode "Window Resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
@@ -279,6 +280,8 @@ exec --no-startup-id clipit
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id picom
+exec_always --no-startup-id wal -R
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -316,6 +319,7 @@ bar {
 	i3bar_command i3bar
 	status_command i3status
 	position bottom
+	height 22
 	status_command exec /home/yadunandanbhat/.config/i3status/net-speed.sh
 # This above line is used to display the current network speed
 # Download this from i3status GitHub repo and make it executable and follow the instructions
@@ -330,39 +334,46 @@ bar {
 	strip_workspace_numbers no
 
     colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
+        background $term_background
+        statusline $term_foreground
+        separator  $term_foreground
 
 #                      border  backgr. text
-        focused_workspace  ##F9FAF9 #16a085 #292F34
-        active_workspace   ##595B5B #353836 #FDF6E3
-        inactive_workspace ##595B5B #222D31 #EEE8D5
-        binding_mode       ##16a085 #2C2C2C #F9FAF9
-        urgent_workspace   ##16a085 #FDF6E3 #E5201D
+        focused_workspace  $term_foreground $term_foreground $term_background
+        active_workspace   $term_foreground $term_foreground $term_background
+        inactive_workspace $term_foreground $term_background $term_foreground
+        binding_mode       $term_foreground $term_background $term_foreground
+        urgent_workspace   $term_foreground $term_background $term_foreground
     }
 }
 
 # hide/unhide i3status bar
-# bindsym $mod+m bar mode toggle
+bindsym $mod+m bar mode toggle
 
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources for some reason.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
 
-  client.background       #2B2C2B
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 #############################
 ### settings for i3-gaps: ###
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
-gaps outer -2
+gaps inner 10
+gaps outer 10
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>

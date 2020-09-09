@@ -15,11 +15,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
-colorscheme gruvbox
+colorscheme wal
 set background=dark
-let g:airline_theme='gruvbox'
+let g:airline_theme='wal'
 let g:airline_powerline_fonts = 1
 
 map <C-n> :NERDTreeToggle<CR>

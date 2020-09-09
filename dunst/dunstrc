@@ -1,8 +1,8 @@
 [global]
     frame_width = 1
-    frame_color = "#788388"
+    frame_color = "#0A0E0F"
     
-    font = System San Francisco Display 10
+    font = System San Francisco Display, Noto Color Emoji 12
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -181,18 +181,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#263238"
-    foreground = "#556064"
+    background = "#0A0E0F"
+    foreground = "#FDAC91"
     timeout = 10
 
 [urgency_normal]
-    background = "#263238"
-    foreground = "#F9FAF9"
+    background = "#0A0E0F"
+    foreground = "#FDAC91"
     timeout = 10
 
 [urgency_critical]
-    background = "#D62929"
-    foreground = "#F9FAF9"
+    background = "#0A0E0F"
+    foreground = "#FDAC91"
     timeout = 0
 
 
