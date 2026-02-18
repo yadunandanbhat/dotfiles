@@ -1,104 +1,61 @@
-# Path to your oh-my-zsh installation.
-export ZSH="/home/yadunandanbhat/.oh-my-zsh"
+alias diff="git diff"
+alias merge="git mergetool"
+alias db="mycli -h localhost -u root -p"
+alias add="git add"
+alias pm="git pull origin master"
+alias pl="git pull"
+alias pu="git push -u origin"
+alias st="git status"
+alias cm="git commit -m"
+alias cb="git checkout -b"
+alias ch="git checkout"
+alias fp="git fetch --prune"
+alias bd="git branch -D"
+alias mvn8="JAVA_HOME=/Users/yadunandanbhat/.sdkman/candidates/java/8.0.442-amzn/ && mvn"
+alias ci="mvn clean install"
+alias rs="git restore"
+alias log="git log --oneline"
+alias grep="rg"
+alias vim="nvim"
+alias cat="bat --theme='Catppuccin Latte' -p"
+alias df="duf"
+alias ll="eza -ahl --icons"
+alias ls="eza -lh --group-directories-first --icons --hyperlink"
+alias top="btop"
+alias cd="z"
+alias kubectl="minikube kubectl --"
+alias fzf="fzf --height 40% --layout=reverse --border"
+alias lz="lazygit"
+alias ping="gping"
+alias wtf="wtfutil"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# DEFAULT_USER=$(whoami)
+eval "$(starship init zsh)"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+source <(fzf --zsh)
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
+export PATH="/Users/yadunandanbhat/Library/Python/3.9/bin:$PATH"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+eval "$(zoxide init zsh)"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/yadunandanbhat/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# Added by Antigravity
+export PATH="/Users/yadunandanbhat/.antigravity/antigravity/bin:$PATH"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/yadunandanbhat/.lmstudio/bin"
+# End of LM Studio CLI section
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
-autoload -U compinit && compinit
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias install="sudo pacman -S"
-alias remove="sudo pacman -R"
-alias search="sudo pacman -Ss"
-alias autoremove="sudo pacman -Rcns $(pacman -Qdtq)"
-alias update="sudo pacman -Syu"
