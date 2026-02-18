@@ -1,0 +1,44 @@
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    hyperlinks = true
+    hyperlinks-file-link-format = idea://open?file={path}&line={line}
+    navigate = true
+    light = false
+    side-by-side = true
+    line-numbers = false
+    true-color = always
+    syntax-theme = Dracula
+    plus-style = "syntax #003800"
+    minus-style = "syntax #3f0001"
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[core]
+    editor = vim
+    pager = delta
+    mergeoptions = --no-edit
+    autocrlf = input
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+    cmd = code --wait --merge $MERGED
+    trustExitCode = true
+[color]
+    ui = auto
+[pager]
+    diff = less -FX
+    blame = delta
+[difftool]
+    prompt = false
+[mergetool]
+    prompt = false
+[pull]
+    rebase = false
+[diff]
+    tool = vscode
+    colorMoved = default
+[merge]
+    conflictstyle = diff3
+    tool = vscode
+[push]
+    autoSetupRemote = true
