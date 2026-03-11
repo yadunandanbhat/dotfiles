@@ -33,7 +33,7 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [cursor]
-style = { shape = "Underline", blinking = "On" }
+style = { shape = "Block", blinking = "On" }
 unfocused_hollow = true
 
 [terminal.shell]
